@@ -1,0 +1,337 @@
+{
+    "custom":{
+        "unit": 1,
+        "time": 1,
+        "req": {
+            "blue_circuit": 1
+        }
+    },
+    "overall": {
+        "unit": 1,
+        "time": 1,
+        "req": {
+            "red_science": 2,
+            "green_science": 2,
+            "blue_science": 2,
+            "black_science": 0.8,
+            "purple_science": 1.2,
+            "yellow_science": 1.6
+        }
+    },
+    "overall_main": {
+        "unit": 1,
+        "time": 1,
+        "req": {
+            "red_science": 2,
+            "green_science": 2,
+            "blue_science": 2,
+            "yellow_science": 1.6,
+            "black_science": 0.8,
+            "purple_science": 1.2
+        }
+    },
+
+    "red_science": {
+        "unit": 1,
+        "time": 5,
+        "req": {
+            "copper_plate": 1,
+            "gear": 1
+        }
+    },
+    "gear": {
+        "unit": 1,
+        "time": 0.5,
+        "req": {
+            "iron_plate": 2
+        }
+    },
+    "iron_plate": {
+        "unit": 1,
+        "time": 1.6,
+        "req": {
+            "iron_ore": 1
+        }
+    },
+     "copper_plate": {
+        "unit": 1,
+        "time": 1.6,
+        "req": {
+            "copper_ore": 1
+        }
+    },
+    "green_science": {
+        "unit": 1,
+        "time": 6,
+        "req": {
+            "transport_belt": 1,
+            "insertor": 1
+        }
+    },
+    "transport_belt": {
+        "unit": 2,
+        "time": 0.5,
+        "req": {
+            "iron_plate": 1,
+            "gear": 1
+        }
+    },
+    "insertor": {
+        "unit": 1,
+        "time": 0.5,
+        "req": {
+            "iron_plate": 1,
+            "gear": 1,
+            "green_circuit": 1
+        }
+    },
+    "green_circuit": {
+        "unit": 1,
+        "time": 0.5,
+        "req": {
+            "iron_plate": 1,
+            "cable": 3
+        }
+    },
+    "cable": {
+        "unit": 2,
+        "time": 0.5,
+        "req": {
+            "copper_plate": 1
+        }
+    },
+    "blue_science": {
+        "unit": 2,
+        "time": 24,
+        "req": {
+            "sulphur": 1,
+            "red_circuit": 3,
+            "engine": 2
+        }
+    },
+    "sulphur": {
+        "unit": 2,
+        "time": 1,
+        "req": {
+            "water": 30,
+            "petroleum": 30
+        }
+    },
+    "petroleum": {
+        "unit": 45,
+        "time": 5,
+        "req": {
+            "crude_oil": 100
+        }
+    },
+    "red_circuit": {
+        "unit": 1,
+        "time": 6,
+        "req": {
+            "plastic": 2,
+            "cable": 4,
+            "green_circuit": 2
+        }
+    },
+    "plastic": {
+        "unit": 2,
+        "time": 1,
+        "req": {
+            "coal": 1,
+            "petroleum": 20
+        }
+    },
+    "engine": {
+        "unit": 1,
+        "time": 10,
+        "req": {
+            "steel": 1,
+            "gear": 1,
+            "pipe": 2
+        }
+    },
+    "steel": {
+        "unit": 1,
+        "time": 16,
+        "req": {
+            "iron_plate": 5
+        }
+    },
+    "pipe": {
+        "unit": 1,
+        "time": 0.5,
+        "req": {
+            "iron_plate": 1
+        }
+    },
+    "black_science": {
+        "unit": 2,
+        "time": 10,
+        "req": {
+            "red_round": 1,
+            "grenade": 1,
+            "wall": 2
+        }
+    },
+    "wall": {
+        "unit": 1,
+        "time": 0.5,
+        "req": {
+            "stone_brick": 5
+        }
+    },
+    "grenade": {
+        "unit": 1,
+        "time": 8,
+        "req": {
+            "coal": 10,
+            "iron_plate": 5
+        }
+    },
+    "red_round": {
+        "unit": 1,
+        "time": 3,
+        "req": {
+            "copper_plate": 5,
+            "steel": 1,
+            "yellow_round": 1
+        }
+    },
+    "yellow_round": {
+        "unit": 1,
+        "time": 1,
+        "req": {
+            "iron_plate": 4
+        }
+    },
+    "stone_brick": {
+        "unit": 1,
+        "time": 1.6,
+        "req": {
+            "stone": 2
+        }
+    },
+    "purple_science": {
+        "unit": 3,
+        "time": 21,
+        "req": {
+            "rail": 30,
+            "electric_furnace": 1,
+            "productivity_module": 1
+        }
+    },
+    "rail": {
+        "unit": 2,
+        "time": 0.5,
+        "req": {
+            "stone": 1,
+            "steel": 1,
+            "iron_stick": 1
+        }
+    },
+    "electric_furnace": {
+        "unit": 1,
+        "time": 5,
+        "req": {
+            "stone_brick": 10,
+            "steel": 10,
+            "red_circuit": 5
+        }
+    },
+    "productivity_module": {
+        "unit": 1,
+        "time": 15,
+        "req": {
+            "green_circuit": 5,
+            "red_circuit": 5
+        }
+    },
+    "iron_stick": {
+        "unit": 2,
+        "time": 0.5,
+        "req": {
+            "iron_plate": 1
+        }
+    },
+    "yellow_science": {
+        "unit": 3,
+        "time": 21,
+        "req": {
+            "blue_circuit": 2,
+            "robot_frame": 1,
+            "low_density_structure": 3
+        }
+    },
+    "low_density_structure": {
+        "unit": 1,
+        "time": 15,
+        "req": {
+            "copper_plate": 20,
+            "steel": 2,
+            "plastic": 5
+        }
+    },
+    "robot_frame": {
+        "unit": 1,
+        "time": 20,
+        "req": {
+            "green_circuit": 3,
+            "steel": 1,
+            "battery": 2,
+            "electric_engine": 1
+        }
+    },
+    "battery": {
+        "unit": 1,
+        "time": 4,
+        "req": {
+            "iron_plate": 1,
+            "copper_plate": 1,
+            "sulphuric_acid": 20
+        }
+    },
+    "electric_engine": {
+        "unit": 1,
+        "time": 10,
+        "req": {
+            "green_circuit": 2,
+            "engine": 1,
+            "lubricant": 15
+        }
+    },
+    "blue_circuit": {
+        "unit": 1,
+        "time": 10,
+        "req": {
+            "sulphuric_acid": 5,
+            "green_circuit": 20,
+            "red_circuit": 2
+        }
+    },
+    "sulphuric_acid": {
+        "unit": 50,
+        "time": 1,
+        "req": {
+            "water": 100,
+            "sulphur": 5,
+            "iron_plate": 1
+        }
+    },
+    "lubricant": {
+        "unit": 10,
+        "time": 1,
+        "req": {
+            "heavy_oil": 10
+        }
+    },
+    "heavy_oil": {
+        "unit": 25,
+        "time": 5,
+        "req": {
+            "water": 50,
+            "crude_oil": 100
+        }
+    }   
+    
+    
+}
