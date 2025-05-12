@@ -35,9 +35,10 @@ class SpeedAndQuantityCalculator:
     def calculate_speed_and_quantity_item_wise(self, item, speed_req, quantity, recipes, out, tabs):
         # print(f"TabLevel : {tabs}  :Running for item ", item, " Speed: ", speed_req)
         # tabStr = ""
+        # print(item)
         if item not in recipes.keys():
             if item not in self.raw_material:
-                # print(f"WARNING: Item {item} not found")
+                print(f"WARNING: Item {item} not found")
                 raise ItemNotFoundInRecipeCatalogError(f"WARNING: Item {item} not found")
             return
         if item in self.raw_material:
@@ -52,6 +53,13 @@ class SpeedAndQuantityCalculator:
             # print(f"Ingredients Level: {tabs}, = {ingredients}")
             speed_for_ingredient = ingredient_count*speed_req_per_unit
             quantity_for_ingredient = (ingredient_count/ product_unit_count ) * quantity
+            
+            # Check the ingredient has different recipe on this planet
+            ingredients_for_planet = f"{ingredients}_{self.planet}"
+            if ingredients_for_planet in recipes.keys() or ingredients_for_planet in self.raw_material:
+                # Recipe is available switch to planet-specific recipe for next calculation
+                ingredients = ingredients_for_planet
+        
             if ingredients in out.keys():
                 out[ingredients]["speed"] += speed_for_ingredient
                 out[ingredients]["quantity"] += quantity_for_ingredient
@@ -61,10 +69,6 @@ class SpeedAndQuantityCalculator:
                     "quantity": quantity_for_ingredient
                 }
             try:
-                # Check if any planet specific recipe exist
-                self.calculate_speed_and_quantity_item_wise(f"{ingredients}_{self.planet}", speed_for_ingredient, quantity_for_ingredient, recipes, out, tabs + 1)
-            except ItemNotFoundInRecipeCatalogError:
-                # If not, then go the default way
                 self.calculate_speed_and_quantity_item_wise(ingredients, speed_for_ingredient, quantity_for_ingredient, recipes, out, tabs + 1)
             except Exception as err:
                 # If any error other than that, It is not intended
@@ -94,16 +98,3 @@ class SpeedAndQuantityCalculator:
             machine_count =  math.ceil(speed_req / unit_made_per_second_per_machine)
             df.loc[index, "machine_count"] = machine_count
         return df
-
-
-
-
-# if __name__ == '__main__':
-#     calculate_speed("overall", 1, recipes, out, 0)
-    
-#     df = get_dataframe(out)
-#     df = df.sort_values(by='item')
-#     fill_machine_count(df, recipes)
-#     print(df)
-#     pretty_print(df)
-#     df.to_csv("processed.csv", index=False)

@@ -27,5 +27,27 @@
                 "quantity": 8
             }
         }
+    },
+    "test1-t": {
+        "planet": "V",
+        "req": {
+            "rocket": {
+                "speed": 0.0066,
+                "quantity": 0.160
+            }
+        }
+    },
+    "test1": {
+        "planet": "V",
+        "req": {
+            "metallurgic_science": {
+                "speed": 1.2,
+                "quantity": 154.8
+            },
+            "rocket": {
+                "speed": 0.0066,
+                "quantity": 0.160
+            }
+        }
     }
 }

@@ -1,8 +1,17 @@
-[
-    "copper_ore", 
-    "iron_ore", 
-    "water", 
-    "crude_oil", 
-    "coal", 
-    "stone"
-]
+{
+    "nauvis": [
+        "copper_ore",
+        "iron_ore",
+        "water",
+        "crude_oil",
+        "coal",
+        "stone"
+    ],
+    "vulcanus": [
+        "tungstun_ore",
+        "sulphuric_acid_vulcanus",
+        "lava",
+        "calcite",
+        "coal"
+    ]
+}

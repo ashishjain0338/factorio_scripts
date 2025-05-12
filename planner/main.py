@@ -1,6 +1,6 @@
 import json
 from utils.pretty_printers import pprint_req, pretty_print_dataframe
-from utils.utils import load_recipe_files
+from utils.utils import load_recipe_files, get_full_planet_name
 from calculators.speed_and_machine_count_calculator import SpeedAndQuantityCalculator
 
 
@@ -42,14 +42,15 @@ if __name__ == '__main__':
         RAW_MATERIAL = json.load(fp)
     print(RAW_MATERIAL)
     recipe_catalog = load_recipe_files("static-jsons/recipes")
-    req_key = "main"
+    req_key = "test1"
     with open('requirement.json', 'r') as fp:
         req = json.load(fp)
         req = req[req_key]
     pprint_req(req)
 
     print("Calculating....")
-    calc_obj = SpeedAndQuantityCalculator(RAW_MATERIAL, req["planet"])
+    planet = get_full_planet_name(req["planet"])
+    calc_obj = SpeedAndQuantityCalculator(RAW_MATERIAL[planet], planet)
     df = intiate_speed_and_machine_count_calculations(req["req"], recipe_catalog, calc_obj)
     pretty_print_dataframe(df)
     print("-------------- Raw-material Summary ------------------------------")

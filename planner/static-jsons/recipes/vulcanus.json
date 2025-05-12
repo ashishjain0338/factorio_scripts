@@ -1,0 +1,150 @@
+{
+    "metallurgic_science": {
+        "unit": 1,
+        "time": 10,
+        "req": {
+            "tungstun_carbide": 3,
+            "tungstun_plate": 2,
+            "molten_copper": 200
+        }
+    },
+    "tungstun_carbide": {
+        "unit": 1,
+        "time": 1,
+        "req": {
+            "tungstun_ore": 2,
+            "carbon": 1,
+            "sulphuric_acid": 10
+        }
+    },
+    "carbon": {
+        "unit": 1,
+        "time": 1,
+        "req": {
+            "coal": 2,
+            "sulphuric_acid": 20
+        }
+    },
+    "tungstun_plate": {
+        "unit": 1,
+        "time": 10,
+        "req": {
+            "tungstun_ore": 4,
+            "molten_iron": 10
+        }
+    },
+    "molten_iron": {
+        "unit": 250,
+        "time": 16,
+        "req": {
+            "lava": 500,
+            "calcite": 10
+        }
+    },
+    "molten_copper": {
+        "unit": 250,
+        "time": 16,
+        "req": {
+            "lava": 500,
+            "calcite": 10
+        }
+    },
+    "low_density_structure_vulcanus": {
+        "unit": 1,
+        "time": 15,
+        "req": {
+            "plastic": 5,
+            "molten_copper": 250,
+            "molten_iron": 60
+        }
+    },
+    "iron_plate_vulcanus": {
+        "unit": 2,
+        "time": 3.2,
+        "req": {
+            "molten_iron": 20
+        }
+    },
+    "copper_plate_vulcanus": {
+        "unit": 2,
+        "time": 3.2,
+        "req": {
+            "molten_copper": 20
+        }
+    },
+    "steel_vulcanus": {
+        "unit": 1,
+        "time": 3.2,
+        "req": {
+            "molten_iron": 30
+        }
+    },
+    "gear_vulcanus": {
+        "unit": 1,
+        "time": 1,
+        "req": {
+            "molten_iron": 10
+        }
+    },
+    "iron_stick_vulcanus": {
+        "unit": 4,
+        "time": 1,
+        "req": {
+            "molten_iron": 20
+        }
+    },
+    "cable_vulcanus": {
+        "unit": 2,
+        "time": 1,
+        "req": {
+            "molten_copper": 5
+        }
+    },
+    "heavy_oil": {
+        "unit": 50,
+        "time": 5,
+        "req": {
+            "coal": 10,
+            "calcite": 2,
+            "sulphuric_acid": 25
+        }
+    },
+    "petroleum_vulcanus": {
+        "unit": 20,
+        "time": 2,
+        "req": {
+            "water": 30,
+            "light_oil": 30
+        }
+    },
+    "light_oil_vulcanus": {
+        "unit": 30,
+        "time": 2,
+        "req": {
+            "water": 30,
+            "heavy_oil": 30
+        }
+    },
+    "steam": {
+        "unit": 10000,
+        "time": 5,
+        "req": {
+            "sulphuric_acid": 1000,
+            "calcite": 1
+        }
+    },
+    "water_vulcanus": {
+        "unit": 90,
+        "time": 1,
+        "req": {
+            "steam": 1000
+        }
+    },
+    "solid_fuel_vulcanus": {
+        "unit": 1,
+        "time": 1,
+        "req": {
+            "heavy_oil": 20
+        }
+    }
+}

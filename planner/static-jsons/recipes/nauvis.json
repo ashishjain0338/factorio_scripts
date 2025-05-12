@@ -299,7 +299,22 @@
             "water": 50,
             "crude_oil": 100
         }
-    }   
-    
-    
+    },
+    "rocket": {
+        "unit": 1,
+        "time": 3,
+        "req": {
+            "blue_circuit": 1,
+            "low_density_structure": 1,
+            "rocket_fuel": 1
+        }
+    },
+    "rocket_fuel":{
+        "unit": 1,
+        "time": 15,
+        "req": {
+            "light_oil": 10,
+            "solid_fuel": 10
+        } 
+    }
 }
