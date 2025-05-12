@@ -1,16 +1,22 @@
 import json
-from utils.pretty_printers import pprint_req
+from utils.pretty_printers import pprint_req, pretty_print_dataframe
 from utils.utils import load_recipe_files
 from calculators.speed_and_machine_count_calculator import SpeedAndQuantityCalculator
 
-def generate_insights(df):
-    # 1. Quantity of each Raw-Material and 
-    pass
+
+def raw_material_summary(df):
+    i = 1
+    for index, row in df[df["is_raw_material"]].iterrows():
+        # print(index, row)
+        Q = row['quantity']
+        Q /= 1000 # Millions
+        Q = round(Q, 3)
+        print(f"{i}. You need {Q} M units of {row['item']}")
+        i += 1
 
 def intiate_speed_and_machine_count_calculations(req, recipe_catalog, calc_obj):
     out = {}
     for item, details in req.items():
-        print(item, details["speed"], details["quantity"])
         S = details["speed"]
         Q = details["quantity"]
         if item in out.keys():
@@ -23,32 +29,10 @@ def intiate_speed_and_machine_count_calculations(req, recipe_catalog, calc_obj):
             }
 
         calc_obj.calculate_speed_and_quantity_item_wise(item, S, Q, recipe_catalog, out, 0)
-
-    print(out)
-    return
-    # In the recipes catolog, set your required items as item = custom i.e.
-    custom_req = {}
-    planet = "N"
-    for item, details in req.items():
-        custom_req[item] = details["speed"] # Item and which speed you want
-        planet = details["planet"]
-
-    your_custom_recipe = {
-        "unit": 1,
-        "time": 1,
-        "req": custom_req
-    }
-
-    # Set your recipe
-    recipe_catalog["custom"] = your_custom_recipe
-    # Calculate Speed of intermediate and raw-material based on your custom recipe:
-    out = {}
-    calculate_speed("custom", 1, recipe_catalog, out, 0)
-    df = get_dataframe(out)
-    df = fill_machine_count(df, recipe_catalog)
-    print(df)
-
-    # Now Fill some Known data
+    df = calc_obj.get_dataframe(out, recipe_catalog)
+    # print(df)
+    
+    return df
     
 
 
@@ -58,13 +42,19 @@ if __name__ == '__main__':
         RAW_MATERIAL = json.load(fp)
     print(RAW_MATERIAL)
     recipe_catalog = load_recipe_files("static-jsons/recipes")
-    req_key = "test1"
+    req_key = "main"
     with open('requirement.json', 'r') as fp:
         req = json.load(fp)
         req = req[req_key]
     pprint_req(req)
 
-    print("Calculating the speed")
-    calc_obj = SpeedAndQuantityCalculator(RAW_MATERIAL, "nauvis")
-    intiate_speed_and_machine_count_calculations(req, recipe_catalog, calc_obj)
+    print("Calculating....")
+    calc_obj = SpeedAndQuantityCalculator(RAW_MATERIAL, req["planet"])
+    df = intiate_speed_and_machine_count_calculations(req["req"], recipe_catalog, calc_obj)
+    pretty_print_dataframe(df)
+    print("-------------- Raw-material Summary ------------------------------")
+    raw_material_summary(df)
+    exportedfile = "output/processed.csv"
+    df.to_csv(exportedfile, index = False)
+    print("File exported to : ", exportedfile)
     

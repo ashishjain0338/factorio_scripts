@@ -1,7 +1,7 @@
 import pandas as pd
 import math
+from utils.exceptions import ItemNotFoundInRecipeCatalogError
 
-# self.raw_material = ["copper_ore", "iron_ore", "water", "crude_oil", "coal", "stone"]
 
 class SpeedAndQuantityCalculator:
 
@@ -37,8 +37,8 @@ class SpeedAndQuantityCalculator:
         # tabStr = ""
         if item not in recipes.keys():
             if item not in self.raw_material:
-                print(f"WARNING: Item {item} not found")
-                exit(101)
+                # print(f"WARNING: Item {item} not found")
+                raise ItemNotFoundInRecipeCatalogError(f"WARNING: Item {item} not found")
             return
         if item in self.raw_material:
             return
@@ -60,11 +60,27 @@ class SpeedAndQuantityCalculator:
                     "speed": speed_for_ingredient,
                     "quantity": quantity_for_ingredient
                 }
-            self.calculate_speed_and_quantity_item_wise(ingredients, speed_for_ingredient, quantity_for_ingredient, recipes, out, tabs + 1)
+            try:
+                # Check if any planet specific recipe exist
+                self.calculate_speed_and_quantity_item_wise(f"{ingredients}_{self.planet}", speed_for_ingredient, quantity_for_ingredient, recipes, out, tabs + 1)
+            except ItemNotFoundInRecipeCatalogError:
+                # If not, then go the default way
+                self.calculate_speed_and_quantity_item_wise(ingredients, speed_for_ingredient, quantity_for_ingredient, recipes, out, tabs + 1)
+            except Exception as err:
+                # If any error other than that, It is not intended
+                print("unknown error occured : Error: ", err)
+                exit(102)
 
-    def get_dataframe(self, out):
-        df = pd.DataFrame(list(out.items()), columns=['item', 'speed'])
+    def get_dataframe(self, out, recipe_catalog):
+        table = []
+        for item, details in out.items():
+            row = [item, details["speed"], details["quantity"]]
+            table.append(row)
+
+        df = pd.DataFrame(table, columns=['item', 'speed', 'quantity'])
         df = df.sort_values(by='item')
+        self.fill_machine_count(df, recipe_catalog)
+        df["is_raw_material"] = df["item"].isin(self.raw_material)
         return df
 
     def fill_machine_count(self, df, recipes):
