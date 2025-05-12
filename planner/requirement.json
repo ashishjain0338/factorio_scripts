@@ -6,5 +6,20 @@
         "black_science": {"speed" : 0.8, "quantity": 1, "planet": "N"},
         "purple_science": {"speed" : 1.2, "quantity": 4, "planet": "N"},
         "yellow_science": {"speed" : 1.6, "quantity": 8, "planet": "N"}
+    },
+    "test1" : {
+        "red_science": {"speed" : 2, "quantity": 345, "planet": "N"},
+        "green_science": {"speed" : 2, "quantity": 345, "planet": "N"},
+        "blue_science": {"speed" : 2, "quantity": 345, "planet": "N"},
+        "black_science": {"speed" : 0.8, "quantity": 140.20, "planet": "N"},
+        "yellow_science": {"speed" : 1.6, "quantity": 267.20, "planet": "N"}
+    },
+    "test2" : {
+        "red_science": {"speed" : 2, "quantity": 345, "planet": "N"},
+        "green_science": {"speed" : 2, "quantity": 345, "planet": "N"},
+        "blue_science": {"speed" : 2, "quantity": 345, "planet": "N"},
+        "black_science": {"speed" : 0.8, "quantity": 140.20, "planet": "N"},
+        "purple_science": {"speed" : 1.2, "quantity": 192.80, "planet": "N"},
+        "yellow_science": {"speed" : 1.6, "quantity": 267.20, "planet": "N"}
     }
 }
