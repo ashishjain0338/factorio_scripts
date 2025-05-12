@@ -1,6 +1,4 @@
-import simplejson as json
 import pandas as pd
-from tabulate import tabulate
 import math
 
 RAW_MATERIAL = ["copper_ore", "iron_ore", "water", "crude_oil", "coal", "stone"]
@@ -29,7 +27,9 @@ def calculate_speed(item, speed_req, recipes, out, tabs):
         calculate_speed(ingredients, speed_for_ingredient, recipes, out, tabs + 1)
 
 def get_dataframe(out):
-    return pd.DataFrame(list(out.items()), columns=['item', 'speed'])
+    df = pd.DataFrame(list(out.items()), columns=['item', 'speed'])
+    df = df.sort_values(by='item')
+    return df
 
 def fill_machine_count(df, recipes):
     df["machine_count"] = [0 for i in range(len(df))]
@@ -40,23 +40,18 @@ def fill_machine_count(df, recipes):
             continue
         unit_made_per_second_per_machine = recipes[item]["unit"]/ recipes[item]["time"]# units made per second
         machine_count =  math.ceil(speed_req / unit_made_per_second_per_machine)
-        df["machine_count"].loc[index] = machine_count
+        df.loc[index, "machine_count"] = machine_count
+    return df
 
 
-def pretty_print(df):
-    print(tabulate(df, headers='keys', tablefmt='fancy_grid', showindex=False))
 
-if __name__ == '__main__':
-    recipe_file = "recipe.json"
-    recipes = {}
-    with open(recipe_file, "r") as fp:
-        recipes = json.load(fp)
-    out = {}
-    calculate_speed("overall", 1, recipes, out, 0)
+
+# if __name__ == '__main__':
+#     calculate_speed("overall", 1, recipes, out, 0)
     
-    df = get_dataframe(out)
-    df = df.sort_values(by='item')
-    fill_machine_count(df, recipes)
-    print(df)
-    pretty_print(df)
-    df.to_csv("processed.csv", index=False)
+#     df = get_dataframe(out)
+#     df = df.sort_values(by='item')
+#     fill_machine_count(df, recipes)
+#     print(df)
+#     pretty_print(df)
+#     df.to_csv("processed.csv", index=False)
